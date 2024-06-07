@@ -55,7 +55,7 @@
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "Australia/Sydney";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -113,9 +113,17 @@
     in
     with pkgs;
     [
+      pkgs.wezterm
+      pkgs.fish
+      pkgs.fzf
+      pkgs.tmux
+      pkgs.neovim
+      pkgs.zoxide
+      pkgs.flutter
+      pkgs.android-studio
+      pkgs.google-chrome
       vim
       wget
-      handbrake
       killall
       git
       cmatrix
@@ -135,7 +143,6 @@
       wl-clipboard
       lm_sensors
       pciutils
-      ffmpeg
       socat
       cowsay
       ripgrep

@@ -57,7 +57,6 @@ in
   home.file.".base16-themes".source = ../../config/base16-themes;
   home.file.".emoji".source = ../../config/emoji;
   home.file.".face.icon".source = ../../config/face.jpg;
-  home.file.".config/face.jpg".source = ../../config/face.jpg;
   home.file.".config/neofetch/config.conf".text = ''
     print_info() {
         prin "$(color 6)  ZaneyOS $ZANEYOS_VERSION"
@@ -183,30 +182,38 @@ in
     })
   ];
 
-  services = {
-    hypridle = {
-      settings = {
-        general = {
-          after_sleep_cmd = "hyprctl dispatch dpms on";
-          ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
-        };
-        listener = [
-          {
-            timeout = 900;
-            on-timeout = "hyprlock";
-          }
-          {
-            timeout = 1200;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
-        ];
-      };
-    };
-  };
-
   programs = {
+    wezterm = {
+      enable = false;
+      extraConfig = ''return {
+        color_scheme = "Catppuccin Macchiato",
+      }'';
+    };
+    tmux = {
+      enable = true;
+      mouse = true;
+      disableConfirmationPrompt = true;
+      prefix = "C-s";
+      plugins = with pkgs; [
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = ''
+            set -g @catppuccin_flavour "macchiato"
+          '';
+        }
+      ];
+      extraConfig = ''
+        set-option -g status-position top
+      '';
+    };
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      enableBashIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
+    };
     gh.enable = true;
     neovim = {
       enable = true;
@@ -249,9 +256,13 @@ in
         lspkind-nvim
         comment-nvim
         nvim-ts-context-commentstring
+        # {
+        #  plugin = catppuccin-nvim;
+        #  config = "colorscheme catppuccin";
+        #}
         {
-          plugin = dracula-nvim;
-          config = "colorscheme dracula";
+          plugin = nord-nvim;
+          config = "colorscheme nord";
         }
         plenary-nvim
         neodev-nvim
@@ -406,6 +417,17 @@ in
         }
       '';
     };
+    fish = {
+      enable=true;
+      shellAliases = {
+        sv = "sudo nvim";
+        flake-rebuild = "nh os switch --hostname ${host} /home/${username}/zaneyos";
+        gcCleanup = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+      };
+      interactiveShellInit = ''
+        set fish_greeting
+      '';
+    };
     bash = {
       enable = true;
       enableCompletion = true;
@@ -451,18 +473,6 @@ in
             blur_size = 8;
           }
         ];
-        image = [
-          {
-            path = "/home/${username}/.config/face.jpg";
-            size = 150;
-            border_size = 4;
-            border_color = "rgb(${palette.base08})";
-            rounding = -1; # Negative means circle
-            position = "0, 200";
-            halign = "center";
-            valign = "center";
-          }
-        ];
         input-field = [
           {
             size = "200, 50";
@@ -470,9 +480,9 @@ in
             monitor = "";
             dots_center = true;
             fade_on_empty = false;
-            font_color = "rgb(${palette.base05})";
-            inner_color = "rgb(${palette.base01})";
-            outer_color = "rgb(${palette.base00})";
+            font_color = "rgb(202, 211, 245)";
+            inner_color = "rgb(91, 96, 120)";
+            outer_color = "rgb(24, 25, 38)";
             outline_thickness = 5;
             placeholder_text = "Password...";
             shadow_passes = 2;

@@ -22,13 +22,9 @@ in
         "scanner"
         "lp"
       ];
-      shell = pkgs.bash;
+      shell = pkgs.fish;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [
-        obs-studio
-        zeroad
-        blender-hip
-      ];
+      packages = with pkgs; [ ];
     };
     # "newuser" = {
     #   homeMode = "755";

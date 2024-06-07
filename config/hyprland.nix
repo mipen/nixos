@@ -71,7 +71,7 @@ with lib;
                   kb_options=caps:super
                   follow_mouse = 1
                   touchpad {
-                    natural_scroll = false
+                    natural_scroll = true
                   }
                   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
                   accel_profile = flat
@@ -135,7 +135,7 @@ with lib;
                   new_is_master = true
                 }
                 bind = ${modifier},Return,exec,${terminal}
-                bind = ${modifier}SHIFT,Return,exec,wofi
+                bind = ${modifier},Tab,exec,wofi
                 bind = ${modifier}SHIFT,W,exec,web-search
                 bind = ${modifier}ALT,W,exec,wallsetter
                 bind = ${modifier}SHIFT,N,exec,swaync-client -rs

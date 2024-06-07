@@ -17,8 +17,8 @@
     inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      host = "familypc";
-      username = "zaney";
+      host = "liam-lptp";
+      username = "liam";
 
       pkgs = import nixpkgs {
         inherit system;
