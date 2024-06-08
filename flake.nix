@@ -19,8 +19,6 @@
       system = "x86_64-linux";
       host = "liam-lptp";
       username = "liam";
-      flakeRoot = builtins.toString ./.;
-      modulesPath = (flakeRoot + "/modules");
 
       pkgs = import nixpkgs {
         inherit system;
@@ -37,8 +35,6 @@
             inherit inputs;
             inherit username;
             inherit host;
-            inherit flakeRoot;
-            inherit modulesPath;
           };
           modules = [
             ./hosts/${host}/config.nix
