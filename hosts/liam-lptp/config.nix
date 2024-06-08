@@ -12,12 +12,7 @@
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
-    ../../modules/intel-drivers.nix
-    ../../modules/vm-guest-services.nix
-    ../../modules/local-hardware-clock.nix
+    ../../modules
   ];
 
   # Kernel
@@ -113,11 +108,12 @@
     in
     with pkgs;
     [
+      vscode.fhs
       pkgs.wezterm
       pkgs.fish
       pkgs.fzf
       pkgs.tmux
-      pkgs.neovim
+      #pkgs.neovim
       pkgs.zoxide
       pkgs.flutter
       pkgs.android-studio
