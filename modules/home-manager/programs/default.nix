@@ -11,6 +11,9 @@
         ./fish.nix
         ./bash.nix
         ./hyprlock.nix
+        # ./steam.nix
+        ./firefox.nix
+        # ./thunar.nix
     ];
 
     tmux.enable = lib.mkDefault true;
@@ -24,4 +27,8 @@
     fish.enable = lib.mkDefault true;
     bash.enable = lib.mkDefault true;
     hyprlock.enable = lib.mkDefault true;
+    # steam.enable = lib.mkDefault false;
+    firefox.enable = lib.mkDefault false;
+    # thunar.enable = lib.mkDefault false;
+
 }

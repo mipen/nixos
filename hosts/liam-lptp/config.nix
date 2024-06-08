@@ -1,30 +1,21 @@
-{
-  config,
-  pkgs,
-  host,
-  inputs,
-  username,
-  options,
-  ...
-}:
+{ config, pkgs, host, inputs, username, options, ... }:
 
 {
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../modules
+    ../../modules/system
+    ../../pkgs/base_packages.nix
+    ../../pkgs/flutter_dev.nix
   ];
 
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 2147483642;
-  };
+  boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; };
   boot.tmp.useTmpfs = false;
   boot.tmp.tmpfsSize = "30%";
   boot.binfmt.registrations.appimage = {
@@ -32,8 +23,8 @@
     interpreter = "${pkgs.appimage-run}/bin/appimage-run";
     recognitionType = "magic";
     offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';
+    mask = "\\xff\\xff\\xff\\xff\\x00\\x00\\x00\\x00\\xff\\xff\\xff";
+    magicOrExtension = "\\x7fELF....AI\\x02";
   };
 
   # This is for OBS Virtual Cam Support - v4l2loopback setup
@@ -47,7 +38,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "${host}";
-  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+  networking.timeServers = options.networking.timeServers.default
+    ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
   time.timeZone = "Australia/Sydney";
@@ -73,7 +65,6 @@
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
     };
-    firefox.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -83,110 +74,12 @@
       enableSSHSupport = true;
     };
     virt-manager.enable = true;
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-    };
+
   };
 
   nixpkgs.config.allowUnfree = true;
 
-  users = {
-    mutableUsers = true;
-  };
-
-  environment.systemPackages =
-    let
-      sugar = pkgs.callPackage ../../pkgs/sddm-sugar-dark.nix { };
-      tokyo-night = pkgs.libsForQt5.callPackage ../../pkgs/sddm-tokyo-night.nix { };
-    in
-    with pkgs;
-    [
-      vscode.fhs
-      pkgs.nixfmt
-      pkgs.fish
-      pkgs.fzf
-      pkgs.neovim
-      pkgs.tmux
-      pkgs.flutter
-      pkgs.android-studio
-      pkgs.google-chrome
-      pkgs.qemu_kvm
-      pkgs.bridge-utils
-      vim
-      wget
-      killall
-      git
-      cmatrix
-      lolcat
-      neofetch
-      htop
-      libvirt
-      lxqt.lxqt-policykit
-      mangohud
-      lm_sensors
-      unzip
-      unrar
-      libnotify
-      eza
-      v4l-utils
-      ydotool
-      wl-clipboard
-      lm_sensors
-      pciutils
-      socat
-      cowsay
-      ripgrep
-      lsd
-      lshw
-      pkg-config
-      meson
-      gnumake
-      ninja
-      symbola
-      noto-fonts-color-emoji
-      material-icons
-      brightnessctl
-      virt-viewer
-      swappy
-      appimage-run
-      networkmanagerapplet
-      yad
-      playerctl
-      nh
-      nixfmt-rfc-style
-      discord
-      libvirt
-      swww
-      grim
-      slurp
-      gnome.file-roller
-      swaynotificationcenter
-      imv
-      transmission-gtk
-      distrobox
-      mpv
-      gimp
-      obs-studio
-      rustup
-      audacity
-      pavucontrol
-      tree
-      protonup-qt
-      font-awesome
-      spotify
-      neovide
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      sugar.sddm-sugar-dark # Name: sugar-dark
-      tokyo-night # Name: tokyo-night-sddm
-      pkgs.libsForQt5.qt5.qtgraphicaleffects
-    ];
+  users = { mutableUsers = true; };
 
   environment.variables = {
     ZANEYOS_VERSION = "2.1";
@@ -285,12 +178,11 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
       substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
     };
     gc = {
       automatic = true;
