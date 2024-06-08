@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, modulesPath, ... }: {
 
   options = { neovim.enable = lib.mkEnableOption "enables neovim"; };
 
@@ -66,7 +66,7 @@
           set noemoji
         '';
         extraLuaConfig = ''
-          ${builtins.readFile ../../../config/nvim/options.lua}
+          ${builtins.readFile (modulesPath + config/nvim/options.lua)}
           ${builtins.readFile ../../../config/nvim/keymaps.lua}
           ${builtins.readFile ../../../config/nvim/plugins/alpha.lua}
           ${builtins.readFile ../../../config/nvim/plugins/autopairs.lua}
