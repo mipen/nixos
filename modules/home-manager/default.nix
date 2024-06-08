@@ -1,4 +1,4 @@
-{
+{ pkgs, lib, config, ... }: {
     imports = [
         ./programs
         ./gtk_theme.nix

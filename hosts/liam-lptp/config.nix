@@ -109,12 +109,11 @@
     with pkgs;
     [
       vscode.fhs
-      pkgs.wezterm
+      pkgs.nixfmt
       pkgs.fish
       pkgs.fzf
+      pkgs.neovim
       pkgs.tmux
-      #pkgs.neovim
-      pkgs.zoxide
       pkgs.flutter
       pkgs.android-studio
       pkgs.google-chrome
