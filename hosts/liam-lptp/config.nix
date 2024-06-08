@@ -122,6 +122,8 @@
       pkgs.flutter
       pkgs.android-studio
       pkgs.google-chrome
+      pkgs.qemu_kvm
+      pkgs.bridge-utils
       vim
       wget
       killall
@@ -259,6 +261,10 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Security / Polkit
   security.rtkit.enable = true;

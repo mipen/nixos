@@ -54,6 +54,8 @@ with lib;
                 exec-once = lxqt-policykit-agent
                 exec-once = swww img /home/${username}/Pictures/Wallpapers/zaney-wallpaper.jpg
                 monitor=,preferred,auto,1
+                layerrule = blur,waybar
+                layerrule = blur,wofi
                 ${extraMonitorSettings}
                 general {
                   gaps_in = 6
@@ -76,6 +78,10 @@ with lib;
                   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
                   accel_profile = flat
                 }
+                device {
+                  name = elan0001:00-04f3:327e-touchpad
+                  sensitivity = +1.0
+                }
                 windowrule = noborder,^(wofi)$
                 windowrule = center,^(wofi)$
                 windowrule = center,^(steam)$
@@ -88,6 +94,8 @@ with lib;
                 misc {
                   mouse_move_enables_dpms = true
                   key_press_enables_dpms = false
+                  disable_hyprland_logo = true
+                  animate_manual_resizes = true
                 }
                 animations {
                   enabled = yes
