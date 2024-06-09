@@ -1,5 +1,5 @@
 { config, pkgs, inputs, username, host, configPath, modsPath
-, scriptsPath, homeModsPath, hostsPath, ... }:
+, scriptsPath, programsPath, hostsPath, ... }:
 let
   palette = config.lib.stylix.colors;
   inherit (import ./variables.nix) gitUsername gitEmail theme;
@@ -18,7 +18,7 @@ in {
     "${configPath}/waybar.nix"
     "${configPath}/wlogout.nix"
     "${configPath}/stylix.nix"
-    homeModsPath
+    programsPath
   ];
 
   # Place Files Inside Home Directory
