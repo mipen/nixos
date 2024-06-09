@@ -1,7 +1,7 @@
-{ config, pkgs, inputs, username, host, gtkThemeFromScheme, configPath, modsPath
-, scriptsPath, homeModsPath, hostsPath, ... }:
+{ config, pkgs, inputs, username, host, configPath, modsPath
+, scriptsPath, programsPath, hostsPath, ... }:
 let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
   inherit (import ./variables.nix) gitUsername gitEmail theme;
 in {
   # Home Manager Settings
@@ -9,22 +9,17 @@ in {
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
 
-  # Set The Colorscheme
-  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
-
   # Import Program Configurations
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    # inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     "${configPath}/hyprland.nix"
     "${configPath}/swaync.nix"
     "${configPath}/waybar.nix"
     "${configPath}/wlogout.nix"
-    homeModsPath
+    "${configPath}/stylix.nix"
+    programsPath
   ];
-
-  # Define Settings For Xresources
-  xresources.properties = { "Xcursor.size" = 24; };
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
@@ -98,15 +93,6 @@ in {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
     };
-  };
-
-  # Configure Cursor Theme
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
   };
 
   # Scripts
