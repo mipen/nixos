@@ -6,7 +6,7 @@
 }:
 
 let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
 in
 {
   programs.wlogout = {

@@ -10,7 +10,7 @@
 }:
 
 let
-  theme = config.colorScheme.palette;
+  theme = config.lib.stylix.colors;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (import "${hostsPath}/${host}/variables.nix")
     browser
@@ -53,7 +53,8 @@ with lib;
                 exec-once = killall -q swaync;sleep .5 && swaync
                 exec-once = nm-applet --indicator
                 exec-once = lxqt-policykit-agent
-                exec-once = swww img /home/${username}/Pictures/Wallpapers/zaney-wallpaper.jpg
+                exec-once = swww img /home/${username}/Pictures/Wallpapers/nord1.png
+                exec-once = wallsetter
                 monitor=,preferred,auto,1
                 layerrule = blur,waybar
                 layerrule = blur,wofi
@@ -62,7 +63,7 @@ with lib;
                   gaps_in = 6
                   gaps_out = 8
                   border_size = 2
-                  col.active_border = rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg
+                  # col.active_border = rgba(${theme.base0C}ff) rgba(${theme.base0D}ff) rgba(${theme.base0B}ff) rgba(${theme.base0E}ff) 45deg
                   col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
                   layout = dwindle
                   resize_on_border = true

@@ -11,6 +11,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
@@ -24,6 +25,7 @@
       homeModsPath = (modsPath + "/home-manager");
       programsPath = (homeModsPath + "/programs");
       configPath = (homeModsPath + "/config");
+      wallpapersPath = (configPath + "/wallpapers");
       scriptsPath = (self + "/scripts");
       hostsPath = (self + "/hosts");
 
@@ -45,11 +47,13 @@
             inherit homeModsPath;
             inherit programsPath;
             inherit configPath;
+            inherit wallpapersPath;
             inherit scriptsPath;
             inherit hostsPath;
           };
           modules = [
             ./hosts/${host}/config.nix
+            inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {
@@ -62,6 +66,7 @@
                 inherit homeModsPath;
                 inherit programsPath;
                 inherit configPath;
+                inherit wallpapersPath;
                 inherit scriptsPath;
                 inherit hostsPath;
                 inherit (inputs.nix-colors.lib-contrib { inherit pkgs; })

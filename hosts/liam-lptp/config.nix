@@ -1,4 +1,5 @@
-{ config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath, ... }:
+{ config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath
+, wallpapersPath, ... }:
 
 {
   imports = [
@@ -47,6 +48,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  #Stylix
+  stylix.image = "${wallpapersPath}/nord1.png";
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -74,7 +78,10 @@
       enableSSHSupport = true;
     };
     virt-manager.enable = true;
-
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

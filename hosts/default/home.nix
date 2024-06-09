@@ -8,7 +8,7 @@
   ...
 }:
 let
-  palette = config.colorScheme.palette;
+  palette = config.lib.stylix.colors;
   inherit (import ./variables.nix)
     gitUsername
     gitEmail
