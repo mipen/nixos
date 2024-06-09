@@ -13,21 +13,25 @@
     };
   };
 
-  outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       host = "liam-lptp";
       username = "liam";
+      modsPath = (self + "/modules");
+      sysModsPath = (modsPath + "/system");
+      pkgsPath = (sysModsPath + "/pkgs");
+      homeModsPath = (modsPath + "/home-manager");
+      programsPath = (homeModsPath + "/programs");
+      configPath = (homeModsPath + "/config");
+      scriptsPath = (self + "/scripts");
+      hostsPath = (self + "/hosts");
 
       pkgs = import nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
-    in
-    {
+    in {
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -35,6 +39,14 @@
             inherit inputs;
             inherit username;
             inherit host;
+            inherit modsPath;
+            inherit sysModsPath;
+            inherit pkgsPath;
+            inherit homeModsPath;
+            inherit programsPath;
+            inherit configPath;
+            inherit scriptsPath;
+            inherit hostsPath;
           };
           modules = [
             ./hosts/${host}/config.nix
@@ -44,7 +56,16 @@
                 inherit username;
                 inherit inputs;
                 inherit host;
-                inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+                inherit modsPath;
+                inherit sysModsPath;
+                inherit pkgsPath;
+                inherit homeModsPath;
+                inherit programsPath;
+                inherit configPath;
+                inherit scriptsPath;
+                inherit hostsPath;
+                inherit (inputs.nix-colors.lib-contrib { inherit pkgs; })
+                  gtkThemeFromScheme;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
