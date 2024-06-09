@@ -1,5 +1,5 @@
-{ config, pkgs, inputs, username, host, configPath, modsPath
-, scriptsPath, programsPath, hostsPath, ... }:
+{ config, pkgs, inputs, username, host, configPath, modsPath, scriptsPath
+, programsPath, hostsPath, servicesPath, ... }:
 let
   palette = config.lib.stylix.colors;
   inherit (import ./variables.nix) gitUsername gitEmail theme;
@@ -11,7 +11,6 @@ in {
 
   # Import Program Configurations
   imports = [
-    # inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     "${configPath}/hyprland.nix"
     "${configPath}/swaync.nix"
@@ -19,6 +18,7 @@ in {
     "${configPath}/wlogout.nix"
     "${configPath}/stylix.nix"
     programsPath
+    servicesPath
   ];
 
   # Place Files Inside Home Directory

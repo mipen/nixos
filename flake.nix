@@ -28,6 +28,7 @@
       wallpapersPath = (configPath + "/wallpapers");
       scriptsPath = (self + "/scripts");
       hostsPath = (self + "/hosts");
+      servicesPath = (homeModsPath + "/services");
 
       pkgs = import nixpkgs {
         inherit system;
@@ -50,6 +51,7 @@
             inherit wallpapersPath;
             inherit scriptsPath;
             inherit hostsPath;
+            inherit servicesPath;
           };
           modules = [
             ./hosts/${host}/config.nix
@@ -69,6 +71,7 @@
                 inherit wallpapersPath;
                 inherit scriptsPath;
                 inherit hostsPath;
+                inherit servicesPath;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
