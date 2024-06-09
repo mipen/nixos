@@ -24,7 +24,7 @@ in with lib; {
         gesture_distance = 300; # how far is the "max"
         gesture_positive = true; # positive = swipe down. Negative = swipe up.
       };
-      bind = [ "SUPER, grave, hyprexo:expo, toggle" ];
+      bind = [ "SUPER, grave, hyprexpo:expo, toggle" ];
     };
     extraConfig = let modifier = "SUPER";
     in concatStrings [''
@@ -44,7 +44,7 @@ in with lib; {
             exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
             exec-once = killall -q swww;sleep .5 && swww init
             exec-once = killall -q waybar;sleep .5 && waybar
-            exec-once = killall -q swaync;sleep .5 && swaync
+            # exec-once = killall -q swaync;sleep .5 && swaync
             exec-once = nm-applet --indicator
             exec-once = lxqt-policykit-agent
             exec-once = swww img /home/${username}/Pictures/Wallpapers/nord1.png
