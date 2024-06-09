@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -69,8 +69,6 @@
                 inherit wallpapersPath;
                 inherit scriptsPath;
                 inherit hostsPath;
-                inherit (inputs.nix-colors.lib-contrib { inherit pkgs; })
-                  gtkThemeFromScheme;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

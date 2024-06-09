@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, username, host, gtkThemeFromScheme, configPath, modsPath
+{ config, pkgs, inputs, username, host, configPath, modsPath
 , scriptsPath, homeModsPath, hostsPath, ... }:
 let
   palette = config.lib.stylix.colors;
@@ -9,12 +9,9 @@ in {
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
 
-  # Set The Colorscheme
-  # colorScheme = inputs.nix-colors.colorSchemes."${theme}";
-
   # Import Program Configurations
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    # inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     "${configPath}/hyprland.nix"
     "${configPath}/swaync.nix"
