@@ -14,11 +14,12 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+    inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       host = "liam-lptp";
       username = "liam";
+      modsPath = (self + "/modules");
 
       pkgs = import nixpkgs {
         inherit system;
@@ -35,6 +36,7 @@
             inherit inputs;
             inherit username;
             inherit host;
+            inherit modsPath;
           };
           modules = [
             ./hosts/${host}/config.nix

@@ -1,10 +1,11 @@
-{ config, pkgs, host, inputs, username, options, ... }:
+{ config, pkgs, host, inputs, username, options, modsPath, ... }:
 
 {
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../modules/system
+    # ../../modules/system
+    (modsPath + "/system")
     ../../pkgs/base_packages.nix
     ../../pkgs/flutter_dev.nix
   ];
