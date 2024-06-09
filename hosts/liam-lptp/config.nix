@@ -8,6 +8,7 @@
     "${sysModsPath}/hardware"
     "${pkgsPath}/base_packages.nix"
     "${pkgsPath}/flutter_dev.nix"
+    "${pkgsPath}/java_dev.nix"
   ];
 
   # Kernel
