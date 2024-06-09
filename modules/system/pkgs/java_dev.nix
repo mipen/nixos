@@ -1,5 +1,5 @@
 { config, pkgs, host, inputs, username, options, ... }: {
-    environment.systemPackages = [
-        jetbrains.idea-ultimate
+    environment.systemPackages = with pkgs; [
+        pkgs.jetbrains.idea-ultimate
     ];
 }
