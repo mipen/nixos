@@ -5,6 +5,7 @@
   inputs,
   username,
   options,
+  modsPath,
   ...
 }:
 
@@ -12,12 +13,12 @@
   imports = [
     ./hardware.nix
     ./users.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
-    ../../modules/intel-drivers.nix
-    ../../modules/vm-guest-services.nix
-    ../../modules/local-hardware-clock.nix
+    (modsPath + "/amd-drivers.nix")
+    (modsPath + "/nvidia-drivers.nix")
+    (modsPath + "/nvidia-prime-drivers.nix")
+    (modsPath + "/intel-drivers.nix")
+    (modsPath + "/vm-guest-services.nix")
+    (modsPath + "/local-hardware-clock.nix")
   ];
 
   # Kernel
