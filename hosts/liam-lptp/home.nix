@@ -1,21 +1,9 @@
-{
-  config,
-  pkgs,
-  inputs,
-  username,
-  host,
-  gtkThemeFromScheme,
-  ...
-}:
+{ config, pkgs, inputs, username, host, gtkThemeFromScheme, configPath, modsPath
+, scriptsPath, homeModsPath, hostsPath, ... }:
 let
   palette = config.colorScheme.palette;
-  inherit (import ./variables.nix)
-    gitUsername
-    gitEmail
-    theme
-    ;
-in
-{
+  inherit (import ./variables.nix) gitUsername gitEmail theme;
+in {
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
@@ -28,36 +16,34 @@ in
   imports = [
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
-    ../../config/hyprland.nix
-    ../../config/swaync.nix
-    ../../config/waybar.nix
-    ../../config/wlogout.nix
-    ../../modules/home-manager
+    "${configPath}/hyprland.nix"
+    "${configPath}/swaync.nix"
+    "${configPath}/waybar.nix"
+    "${configPath}/wlogout.nix"
+    homeModsPath
   ];
 
   # Define Settings For Xresources
-  xresources.properties = {
-    "Xcursor.size" = 24;
-  };
+  xresources.properties = { "Xcursor.size" = 24; };
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../../config/wallpapers;
+    source = "${configPath}/wallpapers";
     recursive = true;
   };
   home.file.".config/wlogout/icons" = {
-    source = ../../config/wlogout;
+    source = "${configPath}/wlogout";
     recursive = true;
   };
   home.file.".local/share/fonts" = {
-    source = ../../config/fonts;
+    source = "${configPath}/fonts";
     recursive = true;
   };
-  home.file.".config/starship.toml".source = ../../config/starship.toml;
-  home.file.".config/ascii-neofetch".source = ../../config/ascii-neofetch;
-  home.file.".base16-themes".source = ../../config/base16-themes;
-  home.file.".emoji".source = ../../config/emoji;
-  home.file.".face.icon".source = ../../config/face.jpg;
+  home.file.".config/starship.toml".source = "${configPath}/starship.toml";
+  home.file.".config/ascii-neofetch".source = "${configPath}/ascii-neofetch";
+  home.file.".base16-themes".source = "${configPath}/base16-themes";
+  home.file.".emoji".source = "${configPath}/emoji";
+  home.file.".face.icon".source = "${configPath}/face.jpg";
   home.file.".config/neofetch/config.conf".text = ''
     print_info() {
         prin "$(color 6)  ZaneyOS $ZANEYOS_VERSION"
@@ -92,7 +78,6 @@ in
     fill_shape=false
   '';
 
-
   # Install & Configure Git
   programs.git = {
     enable = true;
@@ -126,30 +111,29 @@ in
 
   # Scripts
   home.packages = [
-    (import ../../scripts/emopicker9000.nix { inherit pkgs; })
-    (import ../../scripts/task-waybar.nix { inherit pkgs; })
-    (import ../../scripts/squirtle.nix { inherit pkgs; })
-    (import ../../scripts/themechange.nix {
+    (import "${scriptsPath}/emopicker9000.nix" { inherit pkgs; })
+    (import "${scriptsPath}/task-waybar.nix" { inherit pkgs; })
+    (import "${scriptsPath}/squirtle.nix" { inherit pkgs; })
+    (import "${scriptsPath}/themechange.nix" {
       inherit pkgs;
       inherit host;
       inherit username;
     })
-    (import ../../scripts/theme-selector.nix { inherit pkgs; })
-    (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../../scripts/wallsetter.nix {
+    (import "${scriptsPath}/theme-selector.nix" { inherit pkgs; })
+    (import "${scriptsPath}/nvidia-offload.nix" { inherit pkgs; })
+    (import "${scriptsPath}/wallsetter.nix" {
       inherit pkgs;
       inherit username;
     })
-    (import ../../scripts/web-search.nix { inherit pkgs; })
-    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
-    (import ../../scripts/screenshootin.nix { inherit pkgs; })
-    (import ../../scripts/list-hypr-bindings.nix {
+    (import "${scriptsPath}/web-search.nix" { inherit pkgs; })
+    (import "${scriptsPath}/rofi-launcher.nix" { inherit pkgs; })
+    (import "${scriptsPath}/screenshootin.nix" { inherit pkgs; })
+    (import "${scriptsPath}/list-hypr-bindings.nix" {
       inherit pkgs;
       inherit host;
+      inherit hostsPath;
     })
   ];
 
-  programs = {
-    home-manager.enable = true;
-  };
+  programs = { home-manager.enable = true; };
 }

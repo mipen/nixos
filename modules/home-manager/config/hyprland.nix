@@ -5,13 +5,14 @@
   inputs,
   username,
   host,
+  hostsPath,
   ...
 }:
 
 let
   theme = config.colorScheme.palette;
   hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  inherit (import ../hosts/${host}/variables.nix)
+  inherit (import "${hostsPath}/${host}/variables.nix")
     browser
     borderAnim
     terminal
@@ -94,7 +95,7 @@ with lib;
                 misc {
                   mouse_move_enables_dpms = true
                   key_press_enables_dpms = false
-                  disable_hyprland_logo = true
+                  disable_hyprland_logo = false
                   animate_manual_resizes = true
                 }
                 animations {

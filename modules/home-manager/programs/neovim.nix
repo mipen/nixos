@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, configPath, ... }: {
 
   options = { neovim.enable = lib.mkEnableOption "enables neovim"; };
 
@@ -66,18 +66,18 @@
           set noemoji
         '';
         extraLuaConfig = ''
-          ${builtins.readFile ../../../config/nvim/options.lua}
-          ${builtins.readFile ../../../config/nvim/keymaps.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/alpha.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/autopairs.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/auto-session.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/comment.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/cmp.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/lsp.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/nvim-tree.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/telescope.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/todo-comments.lua}
-          ${builtins.readFile ../../../config/nvim/plugins/treesitter.lua}
+          ${builtins.readFile "${configPath}/nvim/options.lua"}
+          ${builtins.readFile "${configPath}/nvim/keymaps.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/alpha.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/autopairs.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/auto-session.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/comment.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/cmp.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/lsp.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/nvim-tree.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/telescope.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/todo-comments.lua"}
+          ${builtins.readFile "${configPath}/nvim/plugins/treesitter.lua"}
           require("ibl").setup()
           require("bufferline").setup{}
           require("lualine").setup({
