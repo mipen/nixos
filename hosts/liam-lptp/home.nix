@@ -6,7 +6,6 @@ let
 in {
   # Import Program Configurations
   imports = [
-    # "${configPath}/hyprland.nix"
     # "${configPath}/swaync.nix"
     # "${configPath}/waybar.nix"
     "${configPath}/wlogout.nix"
