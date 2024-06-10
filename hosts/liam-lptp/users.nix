@@ -21,6 +21,7 @@ in
         "libvirtd"
         "scanner"
         "lp"
+        "i2c"
       ];
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;

@@ -6,8 +6,6 @@
   };
 
   config = lib.mkIf config.module1.enable {
-    programs ={
 
-    };
   };
 }
