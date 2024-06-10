@@ -6,9 +6,7 @@ let
 in {
   # Import Program Configurations
   imports = [
-    inputs.hyprland.homeManagerModules.default
-    inputs.ags.homeManagerModules.default
-    "${configPath}/hyprland.nix"
+    # "${configPath}/hyprland.nix"
     # "${configPath}/swaync.nix"
     # "${configPath}/waybar.nix"
     "${configPath}/wlogout.nix"
@@ -37,10 +35,10 @@ in {
       source = "${configPath}/fonts";
       recursive = true;
     };
-    home.file.".config/ags" = {
-      source = "${configPath}/ags";
-      recursive = true;
-    };
+    # home.file.".config/ags" = {
+    #   source = "${configPath}/ags";
+    #   recursive = true;
+    # };
     home.file.".config/starship.toml".source = "${configPath}/starship.toml";
     home.file.".config/ascii-neofetch".source = "${configPath}/ascii-neofetch";
     home.file.".base16-themes".source = "${configPath}/base16-themes";

@@ -1,7 +1,6 @@
 { inputs, pkgs, lib, config, configPath, ... }: {
 
-  # imports = [ inputs.ags.homeManagerModules.default ];
-  imports = [ ];
+  imports = [ inputs.ags.homeManagerModules.default ];
 
   options = { agsmodule.enable = lib.mkEnableOption "enables ags"; };
 

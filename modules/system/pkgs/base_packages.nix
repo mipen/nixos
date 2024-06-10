@@ -8,6 +8,7 @@
     nixfmt
     fish
     fzf
+    ddcutil
     neovim
     tmux
     google-chrome

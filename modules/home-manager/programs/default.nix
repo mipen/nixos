@@ -15,6 +15,7 @@
         ./firefox.nix
         # ./thunar.nix
         ./ags.nix
+        ./hyprland.nix
     ];
 
     tmux.enable = lib.mkDefault true;

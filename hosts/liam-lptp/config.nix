@@ -30,8 +30,11 @@
   };
 
   # This is for OBS Virtual Cam Support - v4l2loopback setup
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" "i2c-dev" ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.v4l2loopback
+    config.boot.kernelPackages.ddcci-driver
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -96,6 +99,11 @@
 
   # Services to start
   services = {
+    # udev = {
+    #   extraRules = ''
+    #     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+    #   '';
+    # };
     xserver = {
       enable = true;
       displayManager.sddm = {
