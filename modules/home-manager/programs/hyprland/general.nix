@@ -18,6 +18,30 @@ in {
           layout = "dwindle";
           resize_on_border = true;
         };
+
+        monitor = ",preferred,auto,1";
+
+        layerrule = [ "blur,waybar" "blur,wofi" ];
+
+        windowrule =
+          [ "noborder,^(wofi)$" "center,^(wofi)$" "center,^(steam)$" ];
+
+        windowrulev2 = [
+          "stayfocused, title:^()$,class:^(steam)$"
+          "minsize 1 1, title:^()$,class:^(steam)$"
+        ];
+
+        gestures = {
+          workspace_swipe = true;
+          workspace_swipe_fingers = 3;
+        };
+
+        dwindle = {
+          pseudotile = true;
+          preserve_split = true;
+        };
+
+        master = { new_is_master = true; };
       };
     };
   };

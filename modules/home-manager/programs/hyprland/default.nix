@@ -8,6 +8,8 @@
     ./general.nix
     ./input.nix
     ./misc.nix
+    ./env.nix
+    ./exec.nix
   ];
 
   animation_module.enable = lib.mkDefault true;
@@ -17,4 +19,6 @@
   misc_module.enable = lib.mkDefault true;
   input_module.enable = lib.mkDefault true;
   general_module.enable = lib.mkDefault true;
+  exec_module.enable = lib.mkDefault true;
+  env_module.enable = lib.mkDefault true;
 }
