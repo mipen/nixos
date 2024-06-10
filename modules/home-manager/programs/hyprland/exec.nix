@@ -13,10 +13,10 @@
           "lxqt-policykit-agent"
           "swww img /home/${username}/Pictures/Wallpapers/nord1.png"
           "wallsetter"
+          "killall -q waybar;sleep .5 && waybar"
+          "killall -q swaync;sleep .5 && swaync"
         ];
       };
     };
   };
-  # killall -q waybar;sleep .5 && waybar
-  # killall -q swaync;sleep .5 && swaync
 }
