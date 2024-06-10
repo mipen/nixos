@@ -9,6 +9,8 @@
     fish
     fzf
     ddcutil
+    sass
+    bun
     neovim
     tmux
     google-chrome

@@ -123,7 +123,7 @@ in {
         inherit host;
         inherit hostsPath;
       })
-      (import "${scriptsPath}/python.nix" { inherit pkgs; })
+      # (import "${scriptsPath}/python.nix" { inherit pkgs; })
     ];
 
     programs = { home-manager.enable = true; };
