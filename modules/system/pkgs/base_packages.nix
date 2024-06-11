@@ -4,7 +4,7 @@
     tokyo-night = pkgs.libsForQt5.callPackage ./sddm-tokyo-night.nix { };
   in with pkgs; [
     vscode.fhs
-    nixfmt
+    nixfmt-classic
     fish
     fzf
     neovim
