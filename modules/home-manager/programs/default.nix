@@ -16,6 +16,7 @@
         # ./thunar.nix
         ./ags.nix
         ./hyprland.nix
+        ./chromium.nix
     ];
 
     tmux.enable = lib.mkDefault true;
@@ -30,8 +31,9 @@
     bash.enable = lib.mkDefault true;
     hyprlock.enable = lib.mkDefault true;
     # steam.enable = lib.mkDefault false;
-    firefox.enable = lib.mkDefault false;
+    firefox_module.enable = lib.mkDefault false;
     # thunar.enable = lib.mkDefault true;
     agsmodule.enable = lib.mkDefault true;
+    chromium_module.enable = lib.mkDefault true;
 
 }
