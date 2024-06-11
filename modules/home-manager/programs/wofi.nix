@@ -25,6 +25,7 @@ in {
             border-radius: 25px;
             border: 2px solid #${palette.base08};
             background: #${palette.base00};
+            opacity: 0.9;
           }
           #input {
             border-radius: 10px;

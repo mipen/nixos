@@ -289,8 +289,9 @@ in with lib; {
           padding: 0px 24px;
         }
         #custom-hyprbindings:hover, #network:hover, #custom-themeselector:hover, #battery:hover,
-        #custom-notification:hover, #tray:hover, #custom-exit:hover {
-          opacity: 0.8;
+        #custom-notification:hover, #tray:hover, #custom-exit:hover, #window:hover,
+        #pulseaudio:hover, #cpu:hover, #memory:hover, #idle_inhibitor:hover, #clock:hover {
+          opacity: 0.6;
           transition: ${betterTransition};
         }
         #clock {
@@ -307,10 +308,6 @@ in with lib; {
           margin: 0px;
           padding: 18px 15px 18px 50px;
           border-radius: 0px 0px 0px 40px;
-        }
-        #clock:hover {
-          opacity: 0.8;
-          transition: ${betterTransition};
         }
       ''];
     };

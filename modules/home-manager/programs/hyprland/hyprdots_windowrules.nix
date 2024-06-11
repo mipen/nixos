@@ -8,6 +8,7 @@ in {
     wayland.windowManager.hyprland = {
       settings = {
         layerrule = [
+          "blur,wofi"
           "ignorezero,wofi"
           "blur,notifications"
           "ignorezero,notifications"
@@ -19,49 +20,50 @@ in {
         ];
 
         windowrulev2 = [
-          "opacity 0.90 0.90,class:^(firefox)$"
-          "opacity 0.90 0.90,class:^(Brave-browser)$"
-          "opacity 0.80 0.80,class:^(code-oss)$"
-          "opacity 0.80 0.80,class:^(Code)$"
-          "opacity 0.80 0.80,class:^(code-url-handler)$"
-          "opacity 0.80 0.80,class:^(code-insiders-url-handler)$"
-          "opacity 0.80 0.80,class:^(kitty)$"
-          "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
-          "opacity 0.80 0.80,class:^(org.kde.ark)$"
-          "opacity 0.80 0.80,class:^(nwg-look)$"
-          "opacity 0.80 0.80,class:^(qt5ct)$"
-          "opacity 0.80 0.80,class:^(qt6ct)$"
-          "opacity 0.80 0.80,class:^(kvantummanager)$"
-          "opacity 0.80 0.70,class:^(pavucontrol)$"
-          "opacity 0.80 0.70,class:^(blueman-manager)$"
-          "opacity 0.80 0.70,class:^(nm-applet)$"
-          "opacity 0.80 0.70,class:^(nm-connection-editor)$"
-          "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-          "opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$"
-          "opacity 0.80 0.70,class:^(org.freedesktop.impl.portal.desktop.gtk)$"
-          "opacity 0.80 0.70,class:^(org.freedesktop.impl.portal.desktop.hyprland)$"
-          "opacity 0.70 0.70,class:^([Ss]team)$"
-          "opacity 0.70 0.70,class:^(steamwebhelper)$"
-          "opacity 0.70 0.70,class:^(Spotify)$"
-          "opacity 0.70 0.70,initialTitle:^(Spotify Free)$"
-          "opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$" # Clapper-Gtk
-          "opacity 0.80 0.80,class:^(com.github.tchx84.Flatseal)$" # Flatseal-Gtk
-          "opacity 0.80 0.80,class:^(hu.kramo.Cartridges)$" # Cartridges-Gtk
-          "opacity 0.80 0.80,class:^(com.obsproject.Studio)$" # Obs-Qt
-          "opacity 0.80 0.80,class:^(gnome-boxes)$" # Boxes-Gtk
-          "opacity 0.80 0.80,class:^(discord)$" # Discord-Electron
-          "opacity 0.80 0.80,class:^(WebCord)$" # WebCord-Electron
-          "opacity 0.80 0.80,class:^(ArmCord)$" # ArmCord-Electron
-          "opacity 0.80 0.80,class:^(app.drey.Warp)$" # Warp-Gtk
-          "opacity 0.80 0.80,class:^(net.davidotek.pupgui2)$" # ProtonUp-Qt
-          "opacity 0.80 0.80,class:^(yad)$" # Protontricks-Gtk
-          "opacity 0.80 0.80,class:^(Signal)$" # Signal-Gtk
-          "opacity 0.80 0.80,class:^(io.github.alainm23.planify)$" # planify-Gtk
-          "opacity 0.80 0.80,class:^(io.gitlab.theevilskeleton.Upscaler)$" # Upscaler-Gtk
-          "opacity 0.80 0.80,class:^(com.github.unrud.VideoDownloader)$" # VideoDownloader-Gtk
-          "opacity 0.80 0.80,class:^(io.gitlab.adhami3310.Impression)$" # Impression-Gtk
-          "opacity 0.80 0.80,class:^(io.missioncenter.MissionCenter)$" # MissionCenter-Gtk
-          "opacity 0.80 0.80,class:^(io.github.flattool.Warehouse)$" # Warehouse-Gtk
+          "opacity 0.950 0.950,class:^(firefox)$"
+          "opacity 0.950 0.950,class:^(Brave-browser)$"
+          "opacity 0.950 0.950,class:^(code-oss)$"
+          "opacity 0.950 0.950,class:^(Code)$"
+          "opacity 0.950 0.950,class:^(code-url-handler)$"
+          "opacity 0.950 0.950,class:^(code-insiders-url-handler)$"
+          "opacity 0.950 0.950,class:^(kitty)$"
+          "opacity 0.950 0.950,class:^(thunar)$"
+          "opacity 0.950 0.950,class:^(org.kde.dolphin)$"
+          "opacity 0.950 0.950,class:^(org.kde.ark)$"
+          "opacity 0.950 0.950,class:^(nwg-look)$"
+          "opacity 0.950 0.950,class:^(qt5ct)$"
+          "opacity 0.950 0.950,class:^(qt6ct)$"
+          "opacity 0.950 0.950,class:^(kvantummanager)$"
+          "opacity 0.950 0.950,class:^(pavucontrol)$"
+          "opacity 0.950 0.950,class:^(blueman-manager)$"
+          "opacity 0.950 0.950,class:^(nm-applet)$"
+          "opacity 0.950 0.950,class:^(nm-connection-editor)$"
+          "opacity 0.950 0.950,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+          "opacity 0.950 0.950,class:^(polkit-gnome-authentication-agent-1)$"
+          "opacity 0.950 0.950,class:^(org.freedesktop.impl.portal.desktop.gtk)$"
+          "opacity 0.950 0.950,class:^(org.freedesktop.impl.portal.desktop.hyprland)$"
+          "opacity 0.950 0.950,class:^([Ss]team)$"
+          "opacity 0.950 0.950,class:^(steamwebhelper)$"
+          "opacity 0.950 0.950,class:^(Spotify)$"
+          "opacity 0.950 0.950,initialTitle:^(Spotify Free)$"
+          "opacity 0.950 0.950,class:^(com.github.rafostar.Clapper)$" # Clapper-Gtk
+          "opacity 0.950 0.950,class:^(com.github.tchx84.Flatseal)$" # Flatseal-Gtk
+          "opacity 0.950 0.950,class:^(hu.kramo.Cartridges)$" # Cartridges-Gtk
+          "opacity 0.950 0.950,class:^(com.obsproject.Studio)$" # Obs-Qt
+          "opacity 0.950 0.950,class:^(gnome-boxes)$" # Boxes-Gtk
+          "opacity 0.950 0.950,class:^(discord)$" # Discord-Electron
+          "opacity 0.950 0.950,class:^(WebCord)$" # WebCord-Electron
+          "opacity 0.950 0.950,class:^(ArmCord)$" # ArmCord-Electron
+          "opacity 0.950 0.950,class:^(app.drey.Warp)$" # Warp-Gtk
+          "opacity 0.950 0.950,class:^(net.davidotek.pupgui2)$" # ProtonUp-Qt
+          "opacity 0.950 0.950,class:^(yad)$" # Protontricks-Gtk
+          "opacity 0.950 0.950,class:^(Signal)$" # Signal-Gtk
+          "opacity 0.950 0.950,class:^(io.github.alainm23.planify)$" # planify-Gtk
+          "opacity 0.950 0.950,class:^(io.gitlab.theevilskeleton.Upscaler)$" # Upscaler-Gtk
+          "opacity 0.950 0.950,class:^(com.github.unrud.VideoDownloader)$" # VideoDownloader-Gtk
+          "opacity 0.950 0.950,class:^(io.gitlab.adhami3310.Impression)$" # Impression-Gtk
+          "opacity 0.950 0.950,class:^(io.missioncenter.MissionCenter)$" # MissionCenter-Gtk
+          "opacity 0.950 0.950,class:^(io.github.flattool.Warehouse)$" # Warehouse-Gtk
           "float,class:^(org.kde.dolphin)$,title:^(Progress Dialog — Dolphin)$"
           "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
           "float,class:^(firefox)$,title:^(Picture-in-Picture)$"
