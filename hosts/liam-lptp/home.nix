@@ -8,7 +8,6 @@ in {
   # Import Program Configurations
   imports = [
     "${configPath}/swaync.nix"
-    "${configPath}/waybar.nix"
     "${configPath}/wlogout.nix"
     "${configPath}/stylix.nix"
     programsPath

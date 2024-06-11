@@ -1,25 +1,23 @@
-{
-  pkgs,
-  config,
-  lib,
-  host,
-  hostsPath,
-  ...
-}:
+{ pkgs, config, lib, host, hostsPath, ... }:
 
 let
   palette = config.lib.stylix.colors;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import "${hostsPath}/${host}/variables.nix") clock24h waybarAnimations;
-in
-with lib;
-{
-  # Configure & Theme Waybar
-  programs.waybar = {
-    enable = true;
-    package = pkgs.waybar;
-    settings = [
-      {
+  inherit (import "${hostsPath}/${host}/variables.nix")
+    clock24h waybarAnimations;
+in with lib; {
+  imports = [ ];
+
+  options = {
+    waybar_config1.enable = lib.mkEnableOption "enables waybar_config1";
+  };
+
+  config = lib.mkIf config.waybar_config1.enable {
+    # Configure & Theme Waybar
+    programs.waybar = {
+      enable = true;
+      package = pkgs.waybar;
+      settings = [{
         layer = "top";
         position = "top";
         modules-center = [ "hyprland/workspaces" ];
@@ -52,16 +50,16 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = if clock24h == true then '' {:L%H:%M}'' else '' {:L%I:%M %p}'';
+          format = if clock24h == true then " {:L%H:%M}" else " {:L%I:%M %p}";
           tooltip = true;
-          tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = ''
+            <big>{:%A, %d.%B %Y }</big>
+            <tt><small>{calendar}</small></tt>'';
         };
         "hyprland/window" = {
           max-length = 22;
           separate-outputs = false;
-          rewrite = {
-            "" = " 🙈 No Windows? ";
-          };
+          rewrite = { "" = " 🙈 No Windows? "; };
         };
         "memory" = {
           interval = 5;
@@ -78,21 +76,13 @@ with lib;
           tooltip = true;
         };
         "network" = {
-          format-icons = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
-          ];
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
           format-ethernet = " {bandwidthDownOctets}";
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
         };
-        "tray" = {
-          spacing = 12;
-        };
+        "tray" = { spacing = 12; };
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
@@ -107,11 +97,7 @@ with lib;
             phone = "";
             portable = "";
             car = "";
-            default = [
-              ""
-              ""
-              ""
-            ];
+            default = [ "" "" "" ];
           };
           on-click = "sleep 0.1 && pavucontrol";
         };
@@ -152,9 +138,11 @@ with lib;
             none = "";
             dnd-notification = "<span foreground='red'><sup></sup></span>";
             dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-notification =
+              "<span foreground='red'><sup></sup></span>";
             inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-notification =
+              "<span foreground='red'><sup></sup></span>";
             dnd-inhibited-none = "";
           };
           return-type = "json";
@@ -171,25 +159,12 @@ with lib;
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           format-plugged = "󱘖 {capacity}%";
-          format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           on-click = "";
           tooltip = false;
         };
-      }
-    ];
-    style = concatStrings [
-      ''
+      }];
+      style = concatStrings [''
         * {
           font-size: 16px;
           border-radius: 0px;
@@ -216,12 +191,10 @@ with lib;
           background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
           background-size: 300% 300%;
           ${
-            if waybarAnimations == true then
-              ''
-                animation: gradient_horizontal 15s ease infinite;
-              ''
-            else
-              ''''
+            if waybarAnimations == true then ''
+              animation: gradient_horizontal 15s ease infinite;
+            '' else
+              ""
           }
           opacity: 0.5;
           transition: ${betterTransition};
@@ -235,12 +208,10 @@ with lib;
           background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
           background-size: 300% 300%;
           ${
-            if waybarAnimations == true then
-              ''
-                animation: gradient_horizontal 15s ease infinite;
-              ''
-            else
-              ''''
+            if waybarAnimations == true then ''
+              animation: gradient_horizontal 15s ease infinite;
+            '' else
+              ""
           }
           transition: ${betterTransition};
           opacity: 1.0;
@@ -253,12 +224,10 @@ with lib;
           background: linear-gradient(45deg, #${palette.base0E}, #${palette.base0F}, #${palette.base0D}, #${palette.base09});
           background-size: 300% 300%;
           ${
-            if waybarAnimations == true then
-              ''
-                animation: gradient_horizontal 15s ease infinite;
-              ''
-            else
-              ''''
+            if waybarAnimations == true then ''
+              animation: gradient_horizontal 15s ease infinite;
+            '' else
+              ""
           }
           opacity: 0.8;
           transition: ${betterTransition};
@@ -323,18 +292,16 @@ with lib;
           background: linear-gradient(45deg, #${palette.base0C}, #${palette.base0F}, #${palette.base0B}, #${palette.base08});
           background-size: 300% 300%;
           ${
-            if waybarAnimations == true then
-              ''
-                animation: gradient_horizontal 15s ease infinite;
-              ''
-            else
-              ''''
+            if waybarAnimations == true then ''
+              animation: gradient_horizontal 15s ease infinite;
+            '' else
+              ""
           }
           margin: 0px;
           padding: 0px 15px 0px 30px;
           border-radius: 0px 0px 0px 40px;
         }
-      ''
-    ];
+      ''];
+    };
   };
 }

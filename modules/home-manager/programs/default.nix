@@ -17,6 +17,8 @@
         ./ags.nix
         ./hyprland.nix
         ./chromium.nix
+        ./waybar_config1.nix
+        ./waybar_config2.nix
     ];
 
     tmux.enable = lib.mkDefault true;
@@ -35,5 +37,7 @@
     # thunar.enable = lib.mkDefault true;
     agsmodule.enable = lib.mkDefault true;
     chromium_module.enable = lib.mkDefault true;
+    waybar_config1.enable = lib.mkDefault false;
+    waybar_config2.enable = lib.mkDefault true;
 
 }
