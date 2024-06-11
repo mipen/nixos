@@ -44,6 +44,8 @@
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+    environment.localBinInPath = true;
+
     # Enable networking
     networking.networkmanager.enable = true;
     networking.hostName = "${host}";
@@ -112,11 +114,11 @@
         };
       };
       displayManager.sddm = {
-          enable = true;
-          autoNumlock = true;
-          wayland.enable = true;
-          theme = "sugar-dark";
-        };
+        enable = true;
+        autoNumlock = true;
+        wayland.enable = true;
+        theme = "sugar-dark";
+      };
       smartd = {
         enable = true;
         autodetect = true;
