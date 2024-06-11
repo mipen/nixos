@@ -1,5 +1,5 @@
 { pkgs, lib, config, ... }:
-let palette = config.colorScheme.palette;
+let palette = config.lib.stylix.colors;
 in {
 
   options = { kitty.enable = lib.mkEnableOption "enables kitty"; };
@@ -9,14 +9,14 @@ in {
       kitty = {
         enable = true;
         package = pkgs.kitty;
-        font.name = "JetBrainsMono Nerd Font";
-        font.size = 16;
+        # font.name = "JetBrainsMono Nerd Font";
+        # font.size = 16;
         settings = {
           scrollback_lines = 2000;
           wheel_scroll_min_lines = 1;
           window_padding_width = 4;
           confirm_os_window_close = 0;
-          background_opacity = "0.9";
+          # background_opacity = "0.9";
         };
         extraConfig = ''
           foreground #${palette.base05}

@@ -1,5 +1,5 @@
 { pkgs, lib, config, ... }:
-let palette = config.colorScheme.palette;
+let palette = config.lib.stylix.colors;
 in {
 
   options = { wofi.enable = lib.mkEnableOption "enables wofi"; };
