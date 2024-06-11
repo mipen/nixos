@@ -20,6 +20,7 @@ in with lib; {
       settings = [{
         layer = "top";
         position = "top";
+        gtk-layer-shell = true;
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "custom/startmenu"
@@ -27,11 +28,11 @@ in with lib; {
           "pulseaudio"
           "cpu"
           "memory"
-          "idle_inhibitor"
+          # "idle_inhibitor"
         ];
         modules-right = [
           "custom/hyprbindings"
-          "custom/themeselector"
+          # "custom/themeselector"
           "custom/notification"
           "custom/exit"
           "battery"
@@ -173,7 +174,7 @@ in with lib; {
           min-height: 0px;
         }
           window#waybar {
-          background-color: #${palette.base00};
+          background-color: rgba(0,0,0,0 );
         }
         #workspaces {
           color: #${palette.base00};
@@ -184,7 +185,7 @@ in with lib; {
         }
         #workspaces button {
           font-weight: bold;
-          padding: 0px 5px;
+          padding: 0px 10px;
           margin: 0px 3px;
           border-radius: 16px;
           color: #${palette.base00};
@@ -198,10 +199,11 @@ in with lib; {
           }
           opacity: 0.5;
           transition: ${betterTransition};
+          min-width: 30px;
         }
         #workspaces button.active {
           font-weight: bold;
-          padding: 0px 5px;
+          padding: 0px 15px;
           margin: 0px 3px;
           border-radius: 16px;
           color: #${palette.base00};
@@ -263,7 +265,7 @@ in with lib; {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
-          padding: 0px 18px;
+          padding: 0px 24px;
           color: #${palette.base05};
           background: #${palette.base01};
           border-radius: 24px 10px 24px 10px;
@@ -273,7 +275,7 @@ in with lib; {
           background: #${palette.base01};
           font-size: 28px;
           margin: 0px;
-          padding: 0px 30px 0px 15px;
+          padding: 0px 25px 0px 15px;
           border-radius: 0px 0px 40px 0px;
         }
         #custom-hyprbindings, #network, #custom-themeselector, #battery,
@@ -284,7 +286,12 @@ in with lib; {
           margin: 4px 0px;
           margin-right: 7px;
           border-radius: 10px 24px 10px 24px;
-          padding: 0px 18px;
+          padding: 0px 24px;
+        }
+        #custom-hyprbindings:hover, #network:hover, #custom-themeselector:hover, #battery:hover,
+        #custom-notification:hover, #tray:hover, #custom-exit:hover {
+          opacity: 0.8;
+          transition: ${betterTransition};
         }
         #clock {
           font-weight: bold;
@@ -298,8 +305,12 @@ in with lib; {
               ""
           }
           margin: 0px;
-          padding: 0px 15px 0px 30px;
+          padding: 18px 15px 18px 50px;
           border-radius: 0px 0px 0px 40px;
+        }
+        #clock:hover {
+          opacity: 0.8;
+          transition: ${betterTransition};
         }
       ''];
     };
