@@ -12,7 +12,7 @@ in {
           gaps_out = 8;
           border_size = 2;
           "col.active_border" = lib.mkForce
-            "rgba(${palette.base0C}ff) rgba(${palette.base0D}ff) rgba(${palette.base0B}ff) rgba(${palette.base0E}ff) 45deg";
+            "rgba(${palette.base05}ff) rgba(${palette.base00}ff) 45deg";
           "col.inactive_border" = lib.mkForce
             "rgba(${palette.base00}cc) rgba(${palette.base01}cc) 45deg";
           layout = "dwindle";
