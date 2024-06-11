@@ -2,6 +2,7 @@
 , programsPath, hostsPath, ... }:
 let
   palette = config.lib.stylix.colors;
+  colorScheme = config.stylix.base16Scheme;
   inherit (import ./variables.nix) gitUsername gitEmail theme;
 in {
   # Import Program Configurations
@@ -89,6 +90,27 @@ in {
       userDirs = {
         enable = true;
         createDirectories = true;
+      };
+    };
+
+    # Theme GTK
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+      gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+    };
+
+    # Theme QT -> GTK
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+      style = {
+        name = "adwaita-dark";
+        package = pkgs.adwaita-qt;
       };
     };
 
