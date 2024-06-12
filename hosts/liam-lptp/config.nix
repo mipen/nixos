@@ -39,6 +39,7 @@
       config.boot.kernelPackages.v4l2loopback
       config.boot.kernelPackages.ddcci-driver
     ];
+    boot.supportedFilesystems = [ "ntfs" ];
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
