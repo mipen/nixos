@@ -20,24 +20,11 @@ in {
     home.stateVersion = "23.11";
 
     # Place Files Inside Home Directory
+ 
 
-    home.file.".config/wlogout/icons" = {
-      source = "${configPath}/wlogout";
-      recursive = true;
-    };
-    home.file.".local/share/fonts" = {
-      source = "${configPath}/fonts";
-      recursive = true;
-    };
-    # home.file.".config/ags" = {
-    #   source = "${configPath}/ags";
-    #   recursive = true;
-    # };
     home.file.".config/starship.toml".source = "${configPath}/starship.toml";
     home.file.".config/ascii-neofetch".source = "${configPath}/ascii-neofetch";
     home.file.".base16-themes".source = "${configPath}/base16-themes";
-    home.file.".emoji".source = "${configPath}/emoji";
-    home.file.".face.icon".source = "${configPath}/face.jpg";
     home.file.".config/neofetch/config.conf".text = ''
       print_info() {
           info underline
