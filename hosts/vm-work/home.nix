@@ -7,9 +7,7 @@ let
 in {
   # Import Program Configurations
   imports = [
-    "${configPath}/swaync.nix"
-    "${configPath}/wlogout.nix"
-    "${configPath}/stylix.nix"
+    configPath
     programsPath
   ];
 
@@ -22,10 +20,7 @@ in {
     home.stateVersion = "23.11";
 
     # Place Files Inside Home Directory
-    home.file."Pictures/Wallpapers" = {
-      source = "${configPath}/wallpapers";
-      recursive = true;
-    };
+
     home.file.".config/wlogout/icons" = {
       source = "${configPath}/wlogout";
       recursive = true;

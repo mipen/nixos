@@ -18,6 +18,9 @@
     ./chromium.nix
     ./waybar_config1.nix
     ./waybar_config2.nix
+    ./sytlix.nix
+    ./swaync.nix
+    ./wlogout.nix
   ];
 
   tmux.enable = lib.mkDefault true;
@@ -37,4 +40,7 @@
   chromium_module.enable = lib.mkDefault true;
   waybar_config1.enable = lib.mkDefault true;
   waybar_config2.enable = lib.mkDefault false; # currently not functioning
+  stylix_module.enable = lib.mkDefault true;
+  swaync_module.enable = lib.mkDefault true;
+  wlogout_module.enable = lib.mkDefault true;
 }
