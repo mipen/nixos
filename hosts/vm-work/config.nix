@@ -9,6 +9,8 @@
     "${pkgsPath}/base_packages.nix"
     "${pkgsPath}/flutter_dev.nix"
     "${pkgsPath}/java_dev.nix"
+    "${sysModsPath}/programs"
+    "${sysModsPath}/general.nix"
     # "${pkgsPath}/ags.nix"
   ];
 
@@ -77,27 +79,6 @@
       LC_PAPER = "en_US.UTF-8";
       LC_TELEPHONE = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
-    };
-
-    programs = {
-      hyprland = {
-        enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-        xwayland.enable = true;
-      };
-      dconf.enable = true;
-      seahorse.enable = true;
-      fuse.userAllowOther = true;
-      mtr.enable = true;
-      gnupg.agent = {
-        enable = true;
-        enableSSHSupport = true;
-      };
-      virt-manager.enable = true;
-      thunar = {
-        enable = true;
-        plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-      };
     };
 
     nixpkgs.config.allowUnfree = true;
