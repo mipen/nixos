@@ -24,7 +24,6 @@ in {
 
     home.file.".config/starship.toml".source = "${configPath}/starship.toml";
     home.file.".config/ascii-neofetch".source = "${configPath}/ascii-neofetch";
-    home.file.".base16-themes".source = "${configPath}/base16-themes";
     home.file.".config/neofetch/config.conf".text = ''
       print_info() {
           info underline

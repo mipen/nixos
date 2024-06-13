@@ -18,7 +18,7 @@
     ./chromium.nix
     ./waybar_config1.nix
     ./waybar_config2.nix
-    ./sytlix.nix
+    ./stylix.nix
     ./swaync.nix
     ./wlogout.nix
   ];

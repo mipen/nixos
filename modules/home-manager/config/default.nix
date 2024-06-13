@@ -1,4 +1,4 @@
-{
+{ pkgs, lib, config, configPath, ... }: {
     imports = [
         ./_nix/wallpapers.nix
         ./_nix/icons.nix
