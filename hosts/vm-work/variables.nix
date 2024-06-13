@@ -1,13 +1,13 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "John Smith";
-  gitEmail = "example@gmail.com";
+  gitUsername = "Liam Mills";
+  gitEmail = "mipen@windowslive.com";
 
   # Base16 Theme
-  theme = "dracula";
+  theme = "catppuccin-macchiato";
 
   # Hyprland Settings
-  borderAnim = true; # Enable / Disable Hyprland Border Animation
+  borderAnim = false; # Enable / Disable Hyprland Border Animation
   extraMonitorSettings = "";
 
   # Waybar Settings
@@ -15,6 +15,6 @@
   waybarAnimations = false;
 
   # Program Options
-  browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
+  browser = "google-chrome-stable"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "kitty"; # Set Default System Terminal
 }

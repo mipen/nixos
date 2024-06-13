@@ -21,8 +21,9 @@ in
         "libvirtd"
         "scanner"
         "lp"
+        "i2c"
       ];
-      shell = pkgs.bash;
+      shell = pkgs.fish;
       ignoreShellProgramCheck = true;
       packages = with pkgs; [ ];
     };
