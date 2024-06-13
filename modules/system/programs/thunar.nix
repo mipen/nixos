@@ -1,8 +1,6 @@
 { pkgs, lib, config, ... }: {
-
-  options = { thunar.enable = lib.mkEnableOption "enables thunar"; };
-
-  config = lib.mkIf config.thunar.enable {
+  options = { thunar_module.enable = lib.mkEnableOption "enables thunar"; };
+  config = lib.mkIf config.thunar_module.enable {
     programs = {
       thunar = {
         enable = true;
