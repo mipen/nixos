@@ -10,6 +10,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    # nix-index-database.url = "github:nix-community/nix-index-database";
+    # nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     ags.url = "github:Aylur/ags";
   };
@@ -54,6 +56,7 @@
           modules = [
             ./hosts/${host}/config.nix
             inputs.stylix.nixosModules.stylix
+            # inputs.nix-index-database.nixosModules.nix-index
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {

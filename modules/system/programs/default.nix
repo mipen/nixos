@@ -2,6 +2,8 @@
   imports = [ ./hyprland.nix ./thunar.nix ];
 
   thunar_module.enable = lib.mkDefault true;
+  # nix-index_module.enable = lib.mkDefault false;
+
   programs = {
     dconf.enable = true;
     seahorse.enable = true;
