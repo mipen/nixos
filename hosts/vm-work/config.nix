@@ -28,11 +28,6 @@
 
     environment.systemPackages = [ pkgs.konsole ];
 
-    environment.variables = {
-      ZANEYOS_VERSION = "2.1";
-      ZANEYOS = "true";
-    };
-
     # Services to start
     services.xserver.videoDrivers = [ "nvidia" ];
     config.smartd_service.enable = false;

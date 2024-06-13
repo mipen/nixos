@@ -9,7 +9,7 @@
         shellAliases = {
           sv = "sudo nvim";
           flake-rebuild =
-            "nh os switch --hostname ${host} /home/${username}/zaneyos";
+            "nh os switch --hostname ${host} /home/${username}/sisyphusos";
           gcCleanup =
             "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         };

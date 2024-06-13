@@ -45,7 +45,6 @@ in {
     home.file.".face.icon".source = "${configPath}/face.jpg";
     home.file.".config/neofetch/config.conf".text = ''
       print_info() {
-          prin "$(color 6)  ZaneyOS $ZANEYOS_VERSION"
           info underline
           info "$(color 7)  VER" kernel
           info "$(color 2)  UP " uptime
@@ -122,21 +121,12 @@ in {
 
     # Scripts
     home.packages = [
-      (import "${scriptsPath}/emopicker9000.nix" { inherit pkgs; })
       (import "${scriptsPath}/task-waybar.nix" { inherit pkgs; })
-      (import "${scriptsPath}/squirtle.nix" { inherit pkgs; })
-      (import "${scriptsPath}/themechange.nix" {
-        inherit pkgs;
-        inherit host;
-        inherit username;
-      })
-      (import "${scriptsPath}/theme-selector.nix" { inherit pkgs; })
       (import "${scriptsPath}/nvidia-offload.nix" { inherit pkgs; })
       (import "${scriptsPath}/wallsetter.nix" {
         inherit pkgs;
         inherit username;
       })
-      (import "${scriptsPath}/web-search.nix" { inherit pkgs; })
       (import "${scriptsPath}/rofi-launcher.nix" { inherit pkgs; })
       (import "${scriptsPath}/screenshootin.nix" { inherit pkgs; })
       (import "${scriptsPath}/list-hypr-bindings.nix" {

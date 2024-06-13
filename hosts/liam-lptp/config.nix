@@ -26,11 +26,6 @@
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    environment.variables = {
-      ZANEYOS_VERSION = "2.1";
-      ZANEYOS = "true";
-    };
-
      # Extra Module Options
     drivers.amdgpu.enable = true;
     drivers.nvidia.enable = false;
