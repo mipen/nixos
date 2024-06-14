@@ -1,5 +1,5 @@
 { config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath
-, wallpapersPath, ... }:
+, wallpapersPath, lib, ... }:
 
 {
   imports = [
@@ -22,11 +22,17 @@
 
     boot.supportedFilesystems = [ "ntfs" ];
 
+    boot.kernelPackages = pkgs.linuxPackages_cachyos;
+    boot.kernelParams = [ "reboot=acpi" ];
+
+    hardware.cpu.amd.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
+
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-     # Extra Module Options
+    # Extra Module Options
     drivers.amdgpu.enable = true;
     drivers.nvidia.enable = false;
     drivers.nvidia-prime = {
