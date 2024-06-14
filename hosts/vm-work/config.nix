@@ -28,6 +28,9 @@
 
     environment.systemPackages = [ pkgs.konsole ];
 
+    hardware.cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
+
     # Services to start
     services.xserver.videoDrivers = [ "nvidia" ];
     config.smartd_service.enable = false;

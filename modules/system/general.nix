@@ -1,7 +1,8 @@
 { config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath
-, wallpapersPath, ... }: {
+, wallpapersPath, lib, ... }: {
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages;
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,6 +18,8 @@
     mask = "\\xff\\xff\\xff\\xff\\x00\\x00\\x00\\x00\\xff\\xff\\xff";
     magicOrExtension = "\\x7fELF....AI\\x02";
   };
+
+  hardware.enableRedistributableFirmware = true;
 
   # This is for OBS Virtual Cam Support - v4l2loopback setup
   boot.kernelModules = [ "v4l2loopback" "i2c-dev" ];
