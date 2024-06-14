@@ -1,7 +1,7 @@
 { config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath
-, wallpapersPath, ... }: {
+, wallpapersPath, lib, ... }: {
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +29,7 @@
   stylix.image = "${wallpapersPath}/nord1.png";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
   networking.hostName = "${host}";
   networking.timeServers = options.networking.timeServers.default
     ++ [ "pool.ntp.org" ];
@@ -57,24 +57,24 @@
   users = { mutableUsers = true; };
 
   hardware.sane = {
-    enable = true;
+    enable = lib.mkDefault true;
     extraBackends = [ pkgs.sane-airscan ];
     disabledDefaultBackends = [ "escl" ];
   };
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
+  hardware.logitech.wireless.enable = lib.mkDefault true;
+  hardware.logitech.wireless.enableGraphical = lib.mkDefault true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  sound.enable = lib.mkDefault true;
+  hardware.pulseaudio.enable = lib.mkDefault false;
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
+  hardware.bluetooth.enable = lib.mkDefault true;
+  hardware.bluetooth.powerOnBoot = lib.mkDefault true;
+  services.blueman.enable = lib.mkDefault true;
 
   # Security / Polkit
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security.rtkit.enable = lib.mkDefault true;
+  security.polkit.enable = lib.mkDefault true;
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (
@@ -93,18 +93,18 @@
   '';
 
   # Virtualization / Containers
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = lib.mkDefault true;
   virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
+    enable = lib.mkDefault true;
+    dockerCompat = lib.mkDefault true;
+    defaultNetwork.settings.dns_enabled = lib.mkDefault true;
   };
 
   # OpenGL
   hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable = lib.mkDefault true;
+    driSupport = lib.mkDefault true;
+    driSupport32Bit = lib.mkDefault true;
   };
 
   # This value determines the NixOS release from which the default
