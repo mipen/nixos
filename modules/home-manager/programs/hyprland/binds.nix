@@ -11,19 +11,19 @@ in {
       settings = {
         bind = [
           "${modifier},Return,exec,${terminal}"
-          "${modifier},Tab,exec,wofi"
           "${modifier}SHIFT,W,exec,web-search"
+          "${modifier},Tab,exec,wofi"
           "${modifier}ALT,W,exec,wallsetter"
           "${modifier}SHIFT,N,exec,swaync-client -rs"
           "${modifier},W,exec,${browser}"
-          "${modifier},E,exec,emopicker9000"
           "${modifier},S,exec,screenshootin"
-          "${modifier},D,exec,discord"
-          "${modifier},O,exec,obs"
-          "${modifier},G,exec,gimp"
+          "${modifier}SHIFT,R,exec,hyprctl reload"
+          # "${modifier},D,exec,discord"
+          # "${modifier},O,exec,obs"
+          # "${modifier},G,exec,gimp"
           "${modifier}SHIFT,G,exec,godot4"
           "${modifier},T,exec,thunar"
-          "${modifier},M,exec,spotify"
+          # "${modifier},M,exec,spotify"
           "${modifier},Q,killactive,"
           "${modifier},P,pseudo,"
           "${modifier}SHIFT,I,togglesplit,"
@@ -89,6 +89,10 @@ in {
         ];
         binde = [
           ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          "${modifier}CONTROL,right,resizeactive,20 0"
+          "${modifier}CONTROL,left,resizeactive,-20 0"
+          "${modifier}CONTROL,up,resizeactive,0 -20"
+          "${modifier}CONTROL,down,resizeactive,0 20"
         ];
       };
     };
