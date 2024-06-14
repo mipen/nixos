@@ -19,12 +19,12 @@
 
   # Services to start
   services = {
-    libinput.enable = true;
-    openssh.enable = true;
-    printing.enable = true;
-    gnome.gnome-keyring.enable = true;
-    ipp-usb.enable = true;
-    rpcbind.enable = true;
-    nfs.server.enable = true;
+    libinput.enable = lib.mkDefault true;
+    openssh.enable = lib.mkDefault true;
+    printing.enable = lib.mkDefault true;
+    gnome.gnome-keyring.enable = lib.mkDefault true;
+    ipp-usb.enable = lib.mkDefault true;
+    rpcbind.enable = lib.mkDefault true;
+    nfs.server.enable = lib.mkDefault true;
   };
 }

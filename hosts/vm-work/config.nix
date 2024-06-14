@@ -1,5 +1,5 @@
 { config, pkgs, host, inputs, username, options, sysModsPath, pkgsPath
-, wallpapersPath, ... }:
+, wallpapersPath, lib, ... }:
 
 {
   imports = [
@@ -20,6 +20,8 @@
 
   config = {
 
+    boot.kernelPackages = pkgs.linuxPackages;
+
     security.pki.certificateFiles = [ ./cacerts.pem ];
 
     # Configure network proxy if necessary
@@ -33,8 +35,9 @@
 
     # Services to start
     services.xserver.videoDrivers = [ "nvidia" ];
-    config.smartd_service.enable = false;
 
+    smartd_service.enable = false;
+    services.libinput.enable = false;
     hardware.nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
