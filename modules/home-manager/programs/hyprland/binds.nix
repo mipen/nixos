@@ -93,6 +93,10 @@ in {
           "${modifier}CONTROL,left,resizeactive,-20 0"
           "${modifier}CONTROL,up,resizeactive,0 -20"
           "${modifier}CONTROL,down,resizeactive,0 20"
+          "${modifier}SHIFTCONTROL,right,resizeactive,100 0"
+          "${modifier}SHIFTCONTROL,left,resizeactive,-100 0"
+          "${modifier}SHIFTCONTROL,up,resizeactive,0 -100"
+          "${modifier}SHIFTCONTROL,down,resizeactive,0 100"
         ];
       };
     };
