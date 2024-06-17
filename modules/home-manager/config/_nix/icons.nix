@@ -1,8 +1,8 @@
 { pkgs, lib, config, configPath, ... }: {
 
-  options = { icons.enable = lib.mkEnableOption "enables icons home folder"; };
+  options = { wlogout_icons.enable = lib.mkEnableOption "enables wlogout icons home folder"; };
 
-  config = lib.mkIf config.icons.enable {
+  config = lib.mkIf config.wlogout_icons.enable {
     home.file.".config/wlogout/icons" = {
       source = "${configPath}/wlogout";
       recursive = true;
