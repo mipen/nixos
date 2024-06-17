@@ -33,6 +33,14 @@ in {
       enable = true;
       createDirectories = true;
     };
+    configFile = {
+      "gtk-4.0/assets".source = lib.mkForce
+        "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+      "gtk-4.0/gtk.css".source = lib.mkForce
+        "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+      "gtk-4.0/gtk-dark.css".source = lib.mkForce
+        "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+    };
   };
 
   dconf.settings = {
@@ -63,7 +71,7 @@ in {
   programs = { home-manager.enable = true; };
 
   wallpapers.enable = lib.mkDefault true;
-  icons.enable = lib.mkDefault true;
+  wlogout_icons.enable = lib.mkDefault true;
   fonts.enable = lib.mkDefault true;
   ags_config.enable = lib.mkDefault false;
   starship_config.enable = lib.mkDefault true;

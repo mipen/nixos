@@ -18,6 +18,7 @@
     ./chromium.nix
     ./waybar_config1.nix
     ./waybar_config2.nix
+    ./waybar_config3.nix
     ./stylix.nix
     ./swaync.nix
     ./wlogout.nix
@@ -40,6 +41,7 @@
   chromium_module.enable = lib.mkDefault true;
   waybar_config1.enable = lib.mkDefault true;
   waybar_config2.enable = lib.mkDefault false; # currently not functioning
+  waybar_config3.enable = lib.mkDefault false;
   stylix_module.enable = lib.mkDefault true;
   swaync_module.enable = lib.mkDefault true;
   wlogout_module.enable = lib.mkDefault true;

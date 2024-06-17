@@ -18,6 +18,8 @@
     magicOrExtension = "\\x7fELF....AI\\x02";
   };
 
+  hardware.enableRedistributableFirmware = true;
+
   # This is for OBS Virtual Cam Support - v4l2loopback setup
   boot.kernelModules = [ "v4l2loopback" "i2c-dev" ];
   boot.extraModulePackages = [
