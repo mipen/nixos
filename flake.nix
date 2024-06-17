@@ -24,6 +24,7 @@
       username = "liam";
       modsPath = (self + "/modules");
       sysModsPath = (modsPath + "/system");
+      servicesPath = (sysModsPath + "/services");
       pkgsPath = (sysModsPath + "/pkgs");
       homeModsPath = (modsPath + "/home-manager");
       programsPath = (homeModsPath + "/programs");
@@ -46,6 +47,7 @@
             inherit host;
             inherit modsPath;
             inherit sysModsPath;
+            inherit servicesPath;
             inherit pkgsPath;
             inherit homeModsPath;
             inherit programsPath;
@@ -67,6 +69,7 @@
                 inherit host;
                 inherit modsPath;
                 inherit sysModsPath;
+                inherit servicesPath;
                 inherit pkgsPath;
                 inherit homeModsPath;
                 inherit programsPath;

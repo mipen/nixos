@@ -1,23 +1,21 @@
 { pkgs, lib, config, ... }: {
   imports = [
     ./xserver.nix
-    ./sddm.nix
-    ./lightdm.nix
     ./smartd.nix
     ./flatpak.nix
     ./pipewire.nix
     ./syncthing.nix
     ./avahi.nix
+    ./i3wm.nix
   ];
 
   xserver_service.enable = lib.mkDefault true;
-  sddm_service.enable = lib.mkDefault true;
-  lightdm_service.enable = lib.mkDefault false;
   smartd_service.enable = lib.mkDefault true;
   flatpak_service.enable = lib.mkDefault false;
   pipewire_service.enable = lib.mkDefault true;
   syncthing_service.enable = lib.mkDefault true;
   avahi_service.enable = lib.mkDefault true;
+  i3wm_service.enable = lib.mkDefault false;
 
   # Services to start
   services = {

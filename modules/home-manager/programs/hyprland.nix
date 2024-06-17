@@ -6,11 +6,21 @@ let
   inherit (import "${hostsPath}/${host}/variables.nix")
     browser borderAnim terminal;
 in with lib; {
-  imports = [ inputs.hyprland.homeManagerModules.default ./hyprland ];
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+    ./hyprland
+    ./waybar_config1.nix
+    ./waybar_config2.nix
+    ./waybar_config3.nix
+  ];
 
   options = { hyprland_module.enable = lib.mkEnableOption "enables hyprland"; };
 
   config = lib.mkIf config.hyprland_module.enable {
+    waybar_config1.enable = lib.mkDefault true;
+    waybar_config2.enable = lib.mkDefault false; # currently not functioning
+    waybar_config3.enable = lib.mkDefault false;
+
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;

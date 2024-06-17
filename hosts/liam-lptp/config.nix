@@ -20,12 +20,7 @@
 
   config = {
 
-    boot.supportedFilesystems = [ "ntfs" ];
-
-    hyprland_module.enable = false;
-    sddm_module.enable = false; 
-    lightdm_module.enable = true;
-    i3wm_module.enable = true;
+    boot.supportedFilesystems = [ "ntfs" ];    
 
     boot.kernelPackages = pkgs.linuxPackages_cachyos;
     boot.kernelParams = [ "reboot=acpi" ];
