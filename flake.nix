@@ -20,7 +20,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      host = "liam-lptp";
+      host = "vm-work";
       username = "liam";
       modsPath = (self + "/modules");
       sysModsPath = (modsPath + "/system");

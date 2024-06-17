@@ -8,6 +8,7 @@
   config = {
     hyprdots_windowrules_module.enable = false;
     wayland.windowManager.hyprland.settings.monitor = ",3840x2160@60,auto,1";
+    decoration_module.enable = false;
   };
 
 }
