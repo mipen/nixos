@@ -15,6 +15,7 @@
     ./firefox.nix
     ./ags.nix
     ./hyprland.nix
+    ./i3wm.nix
     ./chromium.nix
     ./waybar_config1.nix
     ./waybar_config2.nix
@@ -24,6 +25,8 @@
     ./wlogout.nix
   ];
 
+  hyprland_module.enable = lib.mkDefault true;
+  i3wm_module.enable = lib.mkDefault false;
   tmux.enable = lib.mkDefault true;
   wezterm.enable = lib.mkDefault true;
   zoxide.enable = lib.mkDefault true;

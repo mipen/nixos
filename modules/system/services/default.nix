@@ -1,7 +1,8 @@
 { pkgs, lib, config, ... }: {
   imports = [
     ./xserver.nix
-    ./displayManager.nix
+    ./sddm.nix
+    ./lightdm.nix
     ./smartd.nix
     ./flatpak.nix
     ./pipewire.nix
@@ -10,7 +11,8 @@
   ];
 
   xserver_service.enable = lib.mkDefault true;
-  displayManager_service.enable = lib.mkDefault true;
+  sddm_service.enable = lib.mkDefault true;
+  lightdm_service.enable = lib.mkDefault false;
   smartd_service.enable = lib.mkDefault true;
   flatpak_service.enable = lib.mkDefault false;
   pipewire_service.enable = lib.mkDefault true;

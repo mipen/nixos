@@ -8,9 +8,9 @@ let
 in with lib; {
   imports = [ inputs.hyprland.homeManagerModules.default ./hyprland ];
 
-  options = { };
+  options = { hyprland_module.enable = lib.mkEnableOption "enables hyprland"; };
 
-  config = {
+  config = lib.mkIf config.hyprland_module.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
