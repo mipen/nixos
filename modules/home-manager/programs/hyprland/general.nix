@@ -19,7 +19,7 @@ in {
           resize_on_border = true;
         };
 
-        monitor = ",preferred,auto,1";
+        monitor = lib.mkDefault ",preferred,auto,1";
 
         layerrule = [ "blur,waybar" "blur,wofi" ];
 
