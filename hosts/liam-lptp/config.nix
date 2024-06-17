@@ -20,7 +20,7 @@
 
   config = {
 
-    boot.supportedFilesystems = [ "ntfs" ];
+    boot.supportedFilesystems = [ "ntfs" ];    
 
     boot.kernelPackages = pkgs.linuxPackages_cachyos;
     boot.kernelParams = [ "reboot=acpi" ];

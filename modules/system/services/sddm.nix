@@ -1,11 +1,11 @@
 { pkgs, lib, config, ... }: {
 
   options = {
-    displayManager_service.enable =
-      lib.mkEnableOption "enables displayManager service";
+    sddm_service.enable =
+      lib.mkEnableOption "enables sddm service";
   };
 
-  config = lib.mkIf config.displayManager_service.enable {
+  config = lib.mkIf config.sddm_service.enable {
     services = {
       displayManager.sddm = {
         enable = true;

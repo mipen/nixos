@@ -12,9 +12,14 @@
           touchpad = {
             natural_scroll = true;
             middle_button_emulation = true;
+            scroll_factor = 0.15;
           };
           sensitivity = 0; # -1.0 - 1.0, 0 means no modification."
           accel_profile = "flat";
+        };
+        device = {
+          name = "elan0001:00-04f3:327e-touchpad";
+          sensitivity = 0.75;
         };
       };
     };
