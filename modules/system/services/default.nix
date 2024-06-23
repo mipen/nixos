@@ -7,6 +7,7 @@
     ./syncthing.nix
     ./avahi.nix
     ./i3wm.nix
+    ./auto-cpufreq.nix
   ];
 
   xserver_service.enable = lib.mkDefault true;
@@ -16,6 +17,7 @@
   syncthing_service.enable = lib.mkDefault true;
   avahi_service.enable = lib.mkDefault true;
   i3wm_service.enable = lib.mkDefault false;
+  auto-cpufreq_service.enable = lib.mkDefault false;
 
   # Services to start
   services = {

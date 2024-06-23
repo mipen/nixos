@@ -20,13 +20,23 @@
 
   config = {
 
-    boot.supportedFilesystems = [ "ntfs" ];    
+    boot.supportedFilesystems = [ "ntfs" ];
 
     boot.kernelPackages = pkgs.linuxPackages_cachyos;
     boot.kernelParams = [ "reboot=acpi" ];
 
     hardware.cpu.amd.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    systemd.sleep.extraConfig = ''
+      AllowSuspend=yes
+      AllowHibernation=no
+      AllowHybridSleep=no
+      AllowSuspendThenHibernate=yes
+      HibernateDelaySec=21600
+    '';
+
+    auto-cpufreq_service.enable = true;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
